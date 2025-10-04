@@ -1,10 +1,10 @@
-import lombok.Getter;
 import lombok.Setter;
+import lombok.Getter;
 
 @Getter
-@Setter
 public abstract class Character {
     private int hp;
+    @Setter
     private int power;
 
     public Character(int hp, int power) {
@@ -12,12 +12,13 @@ public abstract class Character {
         this.power = power;
     }
 
-    public void kick(Character target) {
-        // c is the character who is kicking
-        // t is the character who is being kicked
+    public void setHp(int hp) {
+        this.hp = Math.max(0, hp);
     }
 
-    boolean isAlive() {
+    public abstract void kick(Character target);
+
+    public boolean isAlive() {
         return hp > 0;
     }
 
